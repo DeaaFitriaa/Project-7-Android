@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'g10.manga.loveappetite'
+    namespace 'com.food.loveappetite'
     compileSdk 32
 
     defaultConfig {
-        applicationId "g10.manga.loveappetite"
+        applicationId "com.food.loveappetite"
         minSdk 21
         targetSdk 32
         versionCode 1
