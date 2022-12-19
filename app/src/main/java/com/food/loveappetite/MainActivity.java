@@ -1,4 +1,4 @@
-package g10.manga.loveappetite;
+package com.food.loveappetite;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,8 +8,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceSt
-                ate);
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
 }
