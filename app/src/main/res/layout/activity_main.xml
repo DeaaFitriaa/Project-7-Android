@@ -30,7 +30,7 @@
         android:id="@+id/textView3"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Home delivery and online reservation system for restaurants & cafe"
+        android:text="Home delivery and online reservation system for restaurants &amp; cafe"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
