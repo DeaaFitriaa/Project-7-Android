@@ -47,6 +47,14 @@
             android:textFontWeight="20"
             android:text="Burger"
             />
+
+        <TextView
+            android:id="@+id/tv_product_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Description"
+            />
         
     </LinearLayout>
 </androidx.cardview.widget.CardView>
