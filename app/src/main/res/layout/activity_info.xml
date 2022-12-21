@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context=".activity.InfoActivity"
+    >
+
+    <xyz.sahildave.arclayout.ArcLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        app:arc_cropCurve="cropConvex"
+        app:arc_height="48dp"
+        app:arc_position="bottom">
+
+        <ImageView
+            android:id="@+id/imgCover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:background="@color/colorPrimary"
+            android:scaleType="fitXY" />
+
+    </xyz.sahildave.arclayout.ArcLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="380dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/burger"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/tv_product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="28sp"
+            android:text="Product Name"
+            app:layout_constraintTop_toTopOf="@id/btn_add"
+            app:layout_constraintBottom_toBottomOf="@id/btn_add"
+            app:layout_constraintStart_toStartOf="@id/iv_product"
+            />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/corner_radius"
+            android:text="+ ADD"
+            android:textSize="18sp"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@id/iv_product"
+            app:layout_constraintEnd_toEndOf="@id/iv_product"
+            />
+
+        <TextView
+            android:id="@+id/tv_product_desc"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Product Description"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_name"
+            app:layout_constraintStart_toStartOf="@id/tv_product_name"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
