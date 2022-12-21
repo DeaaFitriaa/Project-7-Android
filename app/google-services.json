@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "973679664713",
+    "project_id": "project-ccit",
+    "storage_bucket": "project-ccit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973679664713:android:46b3558c000e43cf0da998",
+        "android_client_info": {
+          "package_name": "com.food.loveappetite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973679664713-rcgdjdbogk5e0i0u5d4uqhqivsmvrulj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.food.loveappetite",
+            "certificate_hash": "cf2d51e412648065a5d3fab6e2ef6463bb44ac71"
+          }
+        },
+        {
+          "client_id": "973679664713-mkroh8mhuvkqo7f5c1242os8nss9i7uf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXbAc5eCNPVXjQa7LhikY9JAfYYsBs_Fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973679664713-mkroh8mhuvkqo7f5c1242os8nss9i7uf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
