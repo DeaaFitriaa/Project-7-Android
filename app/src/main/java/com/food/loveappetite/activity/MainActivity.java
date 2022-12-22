@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navigation = findViewById(R.id.bottom_navigation);
+        navigation.setOnItemSelectedListener(itemSelectedListener);
 
         if (savedInstanceState == null)
             navigation.setSelectedItemId(R.id.nav_menu_home);
