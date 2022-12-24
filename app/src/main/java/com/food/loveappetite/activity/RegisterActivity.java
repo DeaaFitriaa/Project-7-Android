@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.food.loveappetite.R;
 import com.food.loveappetite.controller.UsersController;
@@ -30,12 +31,14 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        if (controller == null)
+            controller = new UsersController(this);
 
-        name = editTextTextPersonName.getText().toString().trim();
-        gmail = editTextTextEmailAddress.getText().toString().trim();
-        nPhone = editTextPhone.getText().toString().trim();
-        pass = editTextTextPassword.getText().toString().trim();
-        repass = editTextTextPassword2.getText().toString().trim();
+        editTextTextPersonName = findViewById(R.id.editTextTextPersonName);
+        editTextTextEmailAddress = findViewById(R.id.editTextTextEmailAddress);
+        editTextPhone = findViewById(R.id.editTextPhone);
+        editTextTextPassword = findViewById(R.id.editTextTextPassword);
+        editTextTextPassword2 = findViewById(R.id.editTextTextPassword2);
 
         btnRegister = findViewById(R.id.button);
         tvBackToLogin = findViewById(R.id.textView2);
@@ -45,6 +48,12 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                name = editTextTextPersonName.getText().toString().trim();
+                gmail = editTextTextEmailAddress.getText().toString().trim();
+                nPhone = editTextPhone.getText().toString().trim();
+                pass = editTextTextPassword.getText().toString().trim();
+                repass = editTextTextPassword2.getText().toString().trim();
+
                 boolean empty = false;
 
                 if(TextUtils.isEmpty(name)){
@@ -63,15 +72,28 @@ public class RegisterActivity extends AppCompatActivity {
                     empty = true;
                     editTextTextPassword2.setError("Please Fill This Section.");
                 }
-                if(! empty){
-                    model.setName(name);
-                    model.setEmail(gmail);
-                    model.setPassword(pass);
-                    controller.create(model);
-                    // logic register
-                    // kalo kelar masuk ke halaman login
-                    startActivity(intentActivityLogin);
-                    finish();
+                if(TextUtils.isEmpty(nPhone)){
+                    empty = true;
+                    editTextPhone.setError("Please Fill This Section.");
+                }
+                if (!pass.equals(repass))
+                    Toast.makeText(
+                            getApplicationContext(),
+                            "Passwords Didn't Match",
+                            Toast.LENGTH_LONG
+                    ).show();
+                else {
+                    if (!empty) {
+                        model = new UsersModel();
+
+                        model.setName(name);
+                        model.setEmail(gmail);
+                        model.setPassword(pass);
+                        model.setPhoneNumber(nPhone);
+                        controller.create(model);
+                        // logic register
+                        // kalo kelar masuk ke halaman login
+                    }
                 }
             }
         });
@@ -82,5 +104,10 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

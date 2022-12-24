@@ -14,7 +14,9 @@ import android.widget.Button;
 
 import com.food.loveappetite.R;
 import com.food.loveappetite.activity.LauncherActivity;
+import com.food.loveappetite.activity.MainActivity;
 import com.food.loveappetite.activity.UpdateUserActivity;
+import com.food.loveappetite.controller.UsersController;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,6 +46,7 @@ public class SettingFragment extends Fragment {
         intentProfile = new Intent(getActivity(), UpdateUserActivity.class);
 
         btnLogout.setOnClickListener(rootView -> {
+            MainActivity.getUsersController().logout();
             startActivity(intentLogout);
             getActivity().finish();
         });

@@ -23,32 +23,36 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.Objects;
+
 public class UsersController {
+
     private UsersModel model;
     private boolean status;
     private Task<DataSnapshot> task;
     private Activity activity;
     private DatabaseReference dbReference;
+    private final String DB_REFERENCE = "6";
 
     public UsersController(){
-        Config.koneksi();
+        dbReference = Config.koneksi(DB_REFERENCE).child("data");
         this.status = false;
     }
 
     public UsersController(Activity activity){
-        Config.koneksi();
+        dbReference = Config.koneksi(DB_REFERENCE).child("data");
         this.activity = activity;
         this.status = false;
     }
 
     public UsersController(UsersModel model){
-        Config.koneksi();
+        dbReference = Config.koneksi(DB_REFERENCE).child("data");
         this.model = model;
         this.status = false;
     }
 
     public UsersController(FirebaseUser user){
-        Config.koneksi();
+        dbReference = Config.koneksi(DB_REFERENCE).child("data");
         this.task = read(user, new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -75,14 +79,25 @@ public class UsersController {
                     String id = auth.getCurrentUser().getUid();
                     model.setID(id);
                     dbReference.child(id).setValue(model);
+                    Log.d(this.getClass().getSimpleName(), dbReference.child(id).toString());
                     UserProfileChangeRequest profileUpdate = new UserProfileChangeRequest.Builder()
                             .setDisplayName(model.getName())
                             .build();
                     auth.getCurrentUser().updateProfile(profileUpdate);
                     activity.startActivity(new Intent(activity, LoginActivity.class));
+                    Toast.makeText(
+                            activity,
+                            "Register Successful",
+                            Toast.LENGTH_SHORT
+                    ).show();
+                    activity.finish();
                 }
                 else {
-                    Toast.makeText(activity,"Register Failed",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(
+                            activity,
+                            Objects.requireNonNull(task.getException()).getLocalizedMessage(),
+                            Toast.LENGTH_SHORT
+                    ).show();
                 }
             }
         });
@@ -120,9 +135,24 @@ public class UsersController {
             auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            activity.startActivity(new Intent(activity, MainActivity.class));
-                            makeToast(R.integer.LOGIN_SUCCESSFUL);
-                            activity.finish();
+                            final UsersModel[] model = new UsersModel[1];
+                            this.read(Objects.requireNonNull(auth.getCurrentUser()), new OnCompleteListener<DataSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        model[0] = task.getResult().getValue(UsersModel.class);
+
+                                        Intent intent = new Intent(activity, MainActivity.class);
+                                        intent.putExtra("UsersModel", model[0]);
+                                        activity.startActivity(intent);
+
+                                        makeToast(R.integer.LOGIN_SUCCESSFUL);
+                                        activity.finish();
+                                    }
+                                    else
+                                        makeToast(R.integer.LOGIN_FAILED);
+                                }
+                            });
                         }
                         else {
                             makeToast(R.integer.LOGIN_FAILED);
@@ -131,7 +161,11 @@ public class UsersController {
         } catch(Exception e){
             System.out.println(e);
         }
+    }
 
+    public void logout() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.signOut();
     }
 
     public void makeToast(int statusCode) {

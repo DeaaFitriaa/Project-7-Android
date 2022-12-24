@@ -33,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        if (controller == null)
+            controller = new UsersController(this);
 
         tvSignUp = findViewById(R.id.textView5);
         intentSignUp = new Intent(this, RegisterActivity.class);
@@ -40,8 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.button3);
         intentLogin = new Intent(this, MainActivity.class);
 
-        emailtxt = editTextTextEmailAddress.getText().toString().trim();
-        passwordtxt = editTextTextPassword.getText().toString().trim();
+        editTextTextEmailAddress = findViewById(R.id.editTextTextEmailAddress);
+        editTextTextPassword = findViewById(R.id.editTextTextPassword);
 
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,11 +56,21 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Log.d(TAG, emailtxt);
+                emailtxt = editTextTextEmailAddress.getText().toString().trim();
+                passwordtxt = editTextTextPassword.getText().toString().trim();
+
                 controller.loginWithEmailAndPassword(emailtxt, passwordtxt);
-                startActivity(intentLogin);
-                finish();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (controller.isLoggedIn()) {
+            startActivity(intentLogin);
+            finish();
+        }
     }
 }
