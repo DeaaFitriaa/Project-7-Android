@@ -1,12 +1,17 @@
 package com.food.loveappetite.model;
 
-public class UsersModel {
+import java.io.Serializable;
+import com.google.gson.annotations.SerializedName;
+
+public class UsersModel implements Serializable {
     private String Address;
     private String Email;
     private String ID;
     private String Name;
     private String Password;
     private String PhoneNumber;
+
+    @Serialized
 
     public UsersModel(){
 

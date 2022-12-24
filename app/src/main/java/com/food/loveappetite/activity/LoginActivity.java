@@ -10,18 +10,22 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.food.loveappetite.R;
 import com.food.loveappetite.controller.UsersController;
+import com.food.loveappetite.model.UsersModel;
 
 public class LoginActivity extends AppCompatActivity {
 
     TextView tvSignUp;
     Intent intentSignUp;
-
+    EditText editTextTextEmailAddress, editTextTextPassword;
     Button btnLogin;
     Intent intentLogin;
+    UsersModel model;
+    UsersController controller;
 
     private String emailtxt, passwordtxt;
 
@@ -36,8 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.button3);
         intentLogin = new Intent(this, MainActivity.class);
 
-        emailtxt = findViewById(R.id.editTextTextEmailAddress).toString().trim();
-        passwordtxt = findViewById(R.id.editTextTextPassword).toString().trim();
+        emailtxt = editTextTextEmailAddress.getText().toString().trim();
+        passwordtxt = editTextTextPassword.getText().toString().trim();
 
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,8 +55,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                Log.d(TAG, emailtxt);
-//                UsersController controller = new UsersController();
-//                controller.loginWithEmailAndPassword(emailtxt, passwordtxt);
+                controller.loginWithEmailAndPassword(emailtxt, passwordtxt);
                 startActivity(intentLogin);
                 finish();
             }
