@@ -1,13 +1,11 @@
 package com.food.loveappetite.controller;
 
 import com.food.loveappetite.config.Config;
-import com.food.loveappetite.model.ProductsModel;
+import com.food.loveappetite.model.CategoriesModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
-
-import java.util.List;
 
 public class ProductsController {
 

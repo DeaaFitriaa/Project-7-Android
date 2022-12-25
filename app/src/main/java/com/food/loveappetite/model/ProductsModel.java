@@ -1,6 +1,8 @@
 package com.food.loveappetite.model;
 
-public class ProductsModel {
+import java.io.Serializable;
+
+public class ProductsModel implements Serializable {
 
     private String CategoryID;
     private String Description;

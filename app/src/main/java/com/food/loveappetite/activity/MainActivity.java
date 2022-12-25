@@ -13,6 +13,7 @@ import com.food.loveappetite.fragment.HomeFragment;
 import com.food.loveappetite.fragment.HotFragment;
 import com.food.loveappetite.fragment.SearchFragment;
 import com.food.loveappetite.fragment.SettingFragment;
+import com.food.loveappetite.model.UsersModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -20,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Fragment fragment;
     private BottomNavigationView navigation;
-    private UsersModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         navigation = findViewById(R.id.bottom_navigation);
         navigation.setOnItemSelectedListener(itemSelectedListener);
-
-        userModel = Intent.getSerializeableExtra("UsersModel");
 
         if (savedInstanceState == null)
             navigation.setSelectedItemId(R.id.nav_menu_home);
