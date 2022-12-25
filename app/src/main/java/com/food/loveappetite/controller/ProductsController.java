@@ -4,25 +4,22 @@ import com.food.loveappetite.config.Config;
 import com.food.loveappetite.model.ProductsModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
+
+import java.util.List;
 
 public class ProductsController {
 
     private final String REFERENCE = "4";
-    private ProductsModel model;
     private DatabaseReference dbReference;
 
     public ProductsController() {
         this.dbReference = Config.koneksi(REFERENCE);
     }
 
-    public ProductsModel read() {
-        return dbReference.get().getResult().getValue(ProductsModel.class);
-    }
-
-    public Task read(OnCompleteListener onCompleteListener) {
+    public Task<DataSnapshot> readAll(OnCompleteListener<DataSnapshot> onCompleteListener) {
         return dbReference.get().addOnCompleteListener(onCompleteListener);
     }
-
 
 }
