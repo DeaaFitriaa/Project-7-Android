@@ -8,6 +8,7 @@ public class ProductsModel {
     private String ID;
     private String Name;
     private String Price;
+    private String ImageURL;
 
     public ProductsModel(){
 
@@ -56,5 +57,11 @@ public class ProductsModel {
     }
     public void setPrice(String Price) {
         this.Price = Price;
+    }
+    public String getImageURL() {
+        return ImageURL;
+    }
+    public void setImageURL(String imageURL) {
+        ImageURL = imageURL;
     }
 }
