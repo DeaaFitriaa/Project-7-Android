@@ -71,6 +71,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
         LinearLayoutManager llManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         holder.rvProducts.setLayoutManager(llManager);
+        holder.rvProducts.setAdapter(productsAdapter);
         holder.tvName.setText(model.getName());
         holder.tvDesc.setText(model.getDescription());
     }

@@ -1,5 +1,6 @@
 package com.food.loveappetite.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,11 +48,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         this.data = list;
         this.context = context;
         this.productInterface = productInterface;
-        this.cardView = context;
-        this.imageView = imageView;
-        this.tvHot = tvHot;
-        this.tvName = tvName;
-        this.tvDesc = tvDesc;
+        Activity activity = (Activity) context;
+        this.cardView = activity.findViewById(cardView);
+        this.imageView = activity.findViewById(imageView);
+        this.tvHot = activity.findViewById(tvHot);
+        this.tvName = activity.findViewById(tvName);
+        this.tvDesc = activity.findViewById(tvDesc);
     }
 
     @NonNull
