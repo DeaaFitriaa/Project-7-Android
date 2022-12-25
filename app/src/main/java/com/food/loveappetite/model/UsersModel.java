@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class UsersModel implements Serializable {
 
+    @SerializedName("Address")
     private String Address;
     private String Email;
     private String ID;
@@ -14,6 +15,7 @@ public class UsersModel implements Serializable {
     public UsersModel(){
 
     }
+
     public UsersModel(String Address, String Email, String ID, String Name, String Password, String PhoneNumber){
         this.Address = Address;
         this.Email = Email;

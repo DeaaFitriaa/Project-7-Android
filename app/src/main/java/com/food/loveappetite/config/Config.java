@@ -9,7 +9,7 @@ public class Config {
     private static DatabaseReference dbReference;
 
     public static DatabaseReference koneksi(String reference) {
-        return FirebaseDatabase.getInstance(DB_URL).getReference(reference);
+        return FirebaseDatabase.getInstance(DB_URL).getReference(reference).child("data");
     }
 
 

@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.food.loveappetite.R;
-import com.food.loveappetite.controller.ProductsController;
-import com.food.loveappetite.controller.UsersController;
 import com.food.loveappetite.fragment.BasketFragment;
 import com.food.loveappetite.fragment.HomeFragment;
 import com.food.loveappetite.fragment.HotFragment;
@@ -22,18 +20,16 @@ public class MainActivity extends AppCompatActivity {
 
     private Fragment fragment;
     private BottomNavigationView navigation;
-
-    private static UsersController controller;
+    private UsersModel userModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (controller == null)
-            controller = new UsersController(this);
-
         navigation = findViewById(R.id.bottom_navigation);
         navigation.setOnItemSelectedListener(itemSelectedListener);
+
+        userModel = Intent.getSerializeableExtra("UsersModel");
 
         if (savedInstanceState == null)
             navigation.setSelectedItemId(R.id.nav_menu_home);
@@ -87,8 +83,4 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
-
-    public static UsersController getUsersController() {
-        return controller;
-    }
 }

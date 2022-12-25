@@ -35,18 +35,18 @@ public class UsersController {
     private final String DB_REFERENCE = "6";
 
     public UsersController(){
-        dbReference = Config.koneksi(DB_REFERENCE).child("data");
+        dbReference = Config.koneksi(DB_REFERENCE);
         this.status = false;
     }
 
     public UsersController(Activity activity){
-        dbReference = Config.koneksi(DB_REFERENCE).child("data");
+        dbReference = Config.koneksi(DB_REFERENCE);
         this.activity = activity;
         this.status = false;
     }
 
     public UsersController(UsersModel model){
-        dbReference = Config.koneksi(DB_REFERENCE).child("data");
+        dbReference = Config.koneksi(DB_REFERENCE);
         this.model = model;
         this.status = false;
     }

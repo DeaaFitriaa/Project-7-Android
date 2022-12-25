@@ -1,11 +1,13 @@
 package com.food.loveappetite.model;
 
 public class ProductsModel {
+
     private String CategoryID;
     private String Description;
     private String Hot;
     private String ID;
     private String Name;
+    private String Price;
 
     public ProductsModel(){
 
@@ -48,5 +50,11 @@ public class ProductsModel {
     }
     public void setDescription(String Description){
         this.Description = Description;
+    }
+    public String getPrice() {
+        return Price;
+    }
+    public void setPrice(String Price) {
+        this.Price = Price;
     }
 }

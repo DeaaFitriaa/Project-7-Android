@@ -41,11 +41,11 @@
         />
 
     <TextView
-        android:id="@+id/tv_user_dob"
+        android:id="@+id/tv_user_phone_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18sp"
-        android:text="User's Dob"
+        android:text="User's Phone Number"
         app:layout_constraintTop_toBottomOf="@id/tv_user_email"
         app:layout_constraintStart_toStartOf="@id/tv_user_email"
         />
