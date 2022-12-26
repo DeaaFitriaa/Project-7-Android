@@ -69,13 +69,24 @@
 
         <TextView
             android:id="@+id/tv_product_desc"
-            android:layout_width="380dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Product Description"
             android:textSize="20sp"
             app:layout_constraintTop_toBottomOf="@id/tv_product_name"
             app:layout_constraintStart_toStartOf="@id/tv_product_name"
+            />
+
+        <TextView
+            android:id="@+id/tv_product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Product Price"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_name"
+            app:layout_constraintEnd_toEndOf="@id/btn_add"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
