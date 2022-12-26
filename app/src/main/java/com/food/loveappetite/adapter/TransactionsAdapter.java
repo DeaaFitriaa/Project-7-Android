@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,16 +22,21 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
 
     private List<TransactionsModel> data;
     private Context context;
+    private TransactionsAdapter.TransactionsInterface transactionsInterface;
     private int cardViewId;
     private int tvNameId;
     private int tvPriceId;
+    private int btnRemoveId;
 
-    public TransactionsAdapter(List<TransactionsModel> list, Context context, int cardViewId, int tvNameId, int tvPriceId) {
+    public TransactionsAdapter(List<TransactionsModel> list, Context context, TransactionsAdapter.TransactionsInterface transactionsInterface,
+                               int cardViewId, int tvNameId, int tvPriceId, int btnRemoveId) {
         this.data = list;
         this.context = context;
+        this.transactionsInterface = transactionsInterface;
         this.cardViewId = cardViewId;
         this.tvNameId = tvNameId;
         this.tvPriceId = tvPriceId;
+        this.btnRemoveId = btnRemoveId;
     }
 
     @NonNull
@@ -48,6 +54,9 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
 
         holder.tvName.setText(model.getProduct().getName());
         holder.tvPrice.setText(model.getProduct().getPrice());
+        holder.btnRemove.setOnClickListener(view -> {
+            transactionsInterface.onDelete(model);
+        });
     }
 
     @Override
@@ -55,19 +64,21 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
         return data.size();
     }
 
-    public interface ProductsInterface {
-        void onSelected(TransactionsModel model);
+    public interface TransactionsInterface {
+        void onDelete(TransactionsModel model);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView tvName;
         private TextView tvPrice;
+        private Button btnRemove;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvName = itemView.findViewById(tvNameId);
             tvPrice = itemView.findViewById(tvPriceId);
+            btnRemove = itemView.findViewById(btnRemoveId);
         }
     }
 }

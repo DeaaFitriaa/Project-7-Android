@@ -29,7 +29,7 @@ import com.google.firebase.database.DataSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BasketFragment extends Fragment {
+public class BasketFragment extends Fragment implements TransactionsAdapter.TransactionsInterface {
 
     private TransactionsController controller;
     private List<TransactionsModel> transactionsList;
@@ -43,6 +43,7 @@ public class BasketFragment extends Fragment {
     private int cvBasketId;
     private int tvProductNameId;
     private int tvProductPriceId;
+    private int btnRemoveId;
 
     public BasketFragment() {
         // Required empty public constructor
@@ -66,6 +67,7 @@ public class BasketFragment extends Fragment {
         cvBasketId = R.id.cv_basket;
         tvProductNameId = R.id.tv_product_name_basket;
         tvProductPriceId = R.id.tv_product_price_basket;
+        btnRemoveId = R.id.btn_remove;
 
         rvBasket.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -84,7 +86,8 @@ public class BasketFragment extends Fragment {
                         TransactionsModel transaction = dataSnapshot.getValue(TransactionsModel.class);
                         transactionsList.add(transaction);
                     }
-                    adapter = new TransactionsAdapter(transactionsList, getActivity(), cvBasketId, tvProductNameId, tvProductPriceId);
+                    adapter = new TransactionsAdapter(transactionsList, getActivity(), BasketFragment.this,
+                            cvBasketId, tvProductNameId, tvProductPriceId, btnRemoveId);
                     rvBasket.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
 
@@ -96,6 +99,20 @@ public class BasketFragment extends Fragment {
                         ).show();
                     });
                 }
+            }
+        });
+    }
+
+    @Override
+    public void onDelete(TransactionsModel model) {
+        controller.delete(model, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(
+                        getActivity(),
+                        "Item Removed",
+                        Toast.LENGTH_SHORT
+                ).show();
             }
         });
     }
