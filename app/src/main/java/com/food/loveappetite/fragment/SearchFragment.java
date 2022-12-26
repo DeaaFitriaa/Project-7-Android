@@ -2,59 +2,97 @@ package com.food.loveappetite.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.food.loveappetite.R;
+import com.food.loveappetite.adapter.ProductsAdapter;
+import com.food.loveappetite.controller.ProductsController;
+import com.food.loveappetite.model.ProductsModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SearchFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+
 public class SearchFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private RecyclerView rvSearch;
+    private EditText etSearch;
+    private Button btnSearch;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ProductsController controller;
+    private List<ProductsModel> productsResult;
+    private ProductsModel product;
+    private ProductsAdapter adapter;
+
+    private int cvProductId;
+    private int ivProductId;
+    private int tvProductHotId;
+    private int tvProductNameId;
+    private int tvProductDescId;
 
     public SearchFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SearchFragment newInstance(String param1, String param2) {
-        SearchFragment fragment = new SearchFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        rvSearch = view.findViewById(R.id.rv_search);
+        etSearch = view.findViewById(R.id.et_search);
+        btnSearch = view.findViewById(R.id.btn_search);
+        cvProductId = R.id.cv_products;
+        ivProductId = R.id.iv_food;
+        tvProductHotId = R.id.tv_hot_deal;
+        tvProductNameId = R.id.tv_product_name;
+        tvProductDescId = R.id.tv_product_desc;
+
+        rvSearch.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        if (controller == null)
+            controller = new ProductsController();
+
+        btnSearch.setOnClickListener(rootView -> {
+            String searched = etSearch.getText().toString().trim();
+            product = new ProductsModel();
+            product.setName(searched);
+            controller.read(product, new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    Log.d(getClass().getSimpleName(), task.toString());
+                    Log.d(getClass().getSimpleName(), task.getResult().toString());
+                    if (task.isSuccessful()) {
+                        for (DataSnapshot dataSnapshot : task.getResult().getChildren()) {
+                            ProductsModel product = dataSnapshot.getValue(ProductsModel.class);
+                            if (product != null) {
+                                Log.d(getClass().getSimpleName(), "MID : " + product.getID());
+                                Log.d(getClass().getSimpleName(), "MName : " + product.getName());
+                                Log.d(getClass().getSimpleName(), "MDescription : " + product.getDescription());
+                                Log.d(getClass().getSimpleName(), "MImageURL : " + product.getImageURL());
+                                Log.d(getClass().getSimpleName(), "MPrice : " + product.getPrice());
+                            }
+                            else {
+                                Log.d(getClass().getSimpleName(), "DataSnapshot : " + dataSnapshot.getValue().toString());
+                            }
+                        }
+                    }
+                }
+            });
+        });
     }
 
     @Override
@@ -63,4 +101,5 @@ public class SearchFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false);
     }
+
 }

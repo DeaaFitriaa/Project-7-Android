@@ -1,10 +1,12 @@
 package com.food.loveappetite.model;
 
-public class ProductsModel {
+import java.io.Serializable;
+
+public class ProductsModel implements Serializable {
 
     private String CategoryID;
     private String Description;
-    private String Hot;
+    private String HOT;
     private String ID;
     private String Name;
     private String Price;
@@ -14,10 +16,10 @@ public class ProductsModel {
 
     }
 
-    public ProductsModel(String CategoryID, String Description, String Hot, String ID, String Name){
+    public ProductsModel(String CategoryID, String Description, String HOT, String ID, String Name){
         this.CategoryID = CategoryID;
         this.Description = Description;
-        this.Hot = Hot;
+        this.HOT = HOT;
         this.ID = ID;
         this.Name = Name;
     }
@@ -41,10 +43,10 @@ public class ProductsModel {
         this.CategoryID = CategoryID;
     }
     public String getHot(){
-        return Hot;
+        return HOT;
     }
-    public void setHot(String Hot){
-        this.Hot = Hot;
+    public void setHot(String HOT){
+        this.HOT = HOT;
     }
     public String getDescription(){
         return Description;

@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class UsersModel implements Serializable {
 
-    @SerializedName("Address")
     private String Address;
     private String Email;
     private String ID;
