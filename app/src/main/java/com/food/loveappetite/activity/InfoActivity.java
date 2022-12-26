@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.Target;
 import com.food.loveappetite.R;
 import com.food.loveappetite.controller.TransactionsController;
 import com.food.loveappetite.model.ProductsModel;
@@ -54,6 +55,7 @@ public class InfoActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(productModel.getImageURL())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .override(Target.SIZE_ORIGINAL)
                 .into(ivProduct);
         tvName.setText(productModel.getName());
         tvDesc.setText(productModel.getDescription());

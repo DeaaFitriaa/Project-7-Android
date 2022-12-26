@@ -21,40 +21,16 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
 
     private List<TransactionsModel> data;
     private Context context;
-    private TransactionsAdapter.ProductsInterface productInterface;
-    private CardView cardView;
     private int cardViewId;
-    private ImageView imageView;
-    private int imageViewId;
-    private TextView tvHot;
-    private int tvHotId;
-    private TextView tvName;
     private int tvNameId;
-    private TextView tvDesc;
-    private int tvDescId;
+    private int tvPriceId;
 
-    public TransactionsAdapter(List<TransactionsModel> list, Context context, TransactionsAdapter.ProductsInterface productInterface,
-                               CardView cardView, ImageView imageView, TextView tvHot, TextView tvName, TextView tvDesc) {
+    public TransactionsAdapter(List<TransactionsModel> list, Context context, int cardViewId, int tvNameId, int tvPriceId) {
         this.data = list;
         this.context = context;
-        this.productInterface = productInterface;
-        this.cardView = cardView;
-        this.imageView = imageView;
-        this.tvHot = tvHot;
-        this.tvName = tvName;
-        this.tvDesc = tvDesc;
-    }
-
-    public TransactionsAdapter(List<TransactionsModel> list, Context context, TransactionsAdapter.ProductsInterface productInterface,
-                               int cardViewId, int imageViewId, int tvHotId, int tvNameId, int tvDescId) {
-        this.data = list;
-        this.context = context;
-        this.productInterface = productInterface;
         this.cardViewId = cardViewId;
-        this.imageViewId = imageViewId;
-        this.tvHotId = tvHotId;
         this.tvNameId = tvNameId;
-        this.tvDescId = tvDescId;
+        this.tvPriceId = tvPriceId;
     }
 
     @NonNull
@@ -69,29 +45,9 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TransactionsModel model = data.get(position);
-        Log.d(getClass().getSimpleName(), "ID : " + model.getID());
-        Log.d(getClass().getSimpleName(), "Name : " + model.getName());
-        Log.d(getClass().getSimpleName(), "Desc : " + model.getDescription());
-        Log.d(getClass().getSimpleName(), "HOT : " + model.getHot());
-        Log.d(getClass().getSimpleName(), "Price : " + model.getPrice());
 
-//        Glide.with(context)
-//                .load(model.getImageURL())
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .override(Target.SIZE_ORIGINAL)
-//                .into(holder.ivProductImg);
-        if (model.getHot().equals("1")) {
-            holder.tvHotDeal.setVisibility(View.VISIBLE);
-            holder.tvHotDeal.setText("HOT DEAL");
-        }
-        else
-            holder.tvHotDeal.setVisibility(View.INVISIBLE);
-
-        holder.tvProductName.setText(model.getName());
-        holder.tvProductDesc.setText(model.getDescription());
-        holder.cvProduct.setOnClickListener(view -> {
-            productInterface.onSelected(model);
-        });
+        holder.tvName.setText(model.getProduct().getName());
+        holder.tvPrice.setText(model.getProduct().getPrice());
     }
 
     @Override
@@ -105,19 +61,13 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private CardView cvProduct;
-        private TextView tvHotDeal;
-        private ImageView ivProductImg;
-        private TextView tvProductName;
-        private TextView tvProductDesc;
+        private TextView tvName;
+        private TextView tvPrice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            cvProduct = itemView.findViewById(cardViewId);
-            tvHotDeal = itemView.findViewById(tvHotId);
-            ivProductImg = itemView.findViewById(imageViewId);
-            tvProductName = itemView.findViewById(tvNameId);
-            tvProductDesc = itemView.findViewById(tvDescId);
+            tvName = itemView.findViewById(tvNameId);
+            tvPrice = itemView.findViewById(tvPriceId);
         }
     }
 }

@@ -79,11 +79,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         Log.d(getClass().getSimpleName(), "HOT : " + model.getHot());
         Log.d(getClass().getSimpleName(), "Price : " + model.getPrice());
 
-//        Glide.with(context)
-//                .load(model.getImageURL())
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .override(Target.SIZE_ORIGINAL)
-//                .into(holder.ivProductImg);
+        Glide.with(context)
+                .load(model.getImageURL())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .override(Target.SIZE_ORIGINAL)
+                .into(holder.ivProductImg);
         if (model.getHot().equals("1")) {
             holder.tvHotDeal.setVisibility(View.VISIBLE);
             holder.tvHotDeal.setText("HOT DEAL");

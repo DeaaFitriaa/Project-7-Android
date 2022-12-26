@@ -1,0 +1,205 @@
+[33mcommit 39c99168210bc418baa3ed35bb96f3d481e5b797[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Mon Dec 26 15:49:28 2022 +0700
+
+    Progress BasketFragment, TransactionsAdapter
+
+[33mcommit f08724f55e97f9efdf021ad10fd2e63e4f92e850[m
+Merge: d92093b c931805
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Mon Dec 26 14:53:01 2022 +0700
+
+    Merge zbook > main
+
+[33mcommit d92093be0895a341b0ad1d78ee254f3330d2ed27[m
+Merge: a7d2b40 6ff7890
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Mon Dec 26 14:14:37 2022 +0700
+
+    Merge ideapad > main
+
+[33mcommit c9318055a78998ce363082396512be594f3cbf45[m[33m ([m[1;31morigin/zbook[m[33m)[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Mon Dec 26 14:11:19 2022 +0700
+
+    Progress SearchFragment
+
+[33mcommit 6ff78909ee130877c857ed9ed9236a46e5f3adc7[m[33m ([m[1;31morigin/ideapad[m[33m)[m
+Author: arya <elprab17@gmail.com>
+Date:   Mon Dec 26 13:27:22 2022 +0700
+
+    <update, setting>
+
+[33mcommit 88c4fb3e4fab483c7212ed770419de8f00a9216a[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Mon Dec 26 01:52:43 2022 +0700
+
+    Progress HomeFragment
+
+[33mcommit 90a62c1c463b2f6b45b8000b600852adf6c495c4[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Mon Dec 26 01:18:15 2022 +0700
+
+    Progress ProductsController
+
+[33mcommit a7d2b40725f8b84e66204139705e77917282dee2[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Sun Dec 25 23:23:40 2022 +0700
+
+    Progress ProductsController
+
+[33mcommit 06193f2029cbed23a8352ac791d3af9c97952edf[m[33m ([m[1;31morigin/pavilion[m[33m, [m[1;32mpavilion[m[33m)[m
+Author: WindowsRama <rafihariyadi01@gmail.com>
+Date:   Sun Dec 25 23:12:02 2022 +0700
+
+    Progress ProductsController
+
+[33mcommit 224cb44e959067ce0d71c1991a3bab6585219878[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Sun Dec 25 22:51:41 2022 +0700
+
+    Membuat ProductsController
+
+[33mcommit ce6ef7fef3ab3917abcb315c6a383b5dd8c0a392[m
+Author: WindowsRama <rafihariyadi01@gmail.com>
+Date:   Sat Dec 24 23:44:57 2022 +0700
+
+    Perbaikan bug di LoginActivity dan RegisterActivity
+
+[33mcommit e829e81d799b33b708ec106af52fdc289e0eaaa0[m[33m ([m[1;32mideapad[m[33m)[m
+Author: arya <elprab17@gmail.com>
+Date:   Sat Dec 24 09:42:54 2022 +0700
+
+    <commit ntah keberapa>
+
+[33mcommit dc8e74521537f0afab011363d6c52052475eb985[m
+Author: arya <elprab17@gmail.com>
+Date:   Fri Dec 23 18:29:03 2022 +0700
+
+    <commit1>
+
+[33mcommit 268f5a011491d31f52e46cf9a16622a576e72c3f[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Thu Dec 22 20:32:03 2022 +0700
+
+    update login dan regis
+
+[33mcommit c42f6cecb41e662e10de3e56f37e2ed31d0f63ca[m
+Merge: c151901 9081da4
+Author: Hariyadi <harry.agah@gmail.com>
+Date:   Wed Dec 21 23:31:51 2022 +0700
+
+    Changed previous MainActivity to LauncherActivity, made MainActivity consisting of Fragments
+
+[33mcommit c151901364559453f41f44dcf58f429153bf8e8d[m
+Merge: a80163b 68d9746
+Author: Hariyadi <harry.agah@gmail.com>
+Date:   Wed Dec 21 21:55:29 2022 +0700
+
+    Merge branch 'pavilion' to 'main'
+
+[33mcommit 68d9746c6adebba3089b8680a859a33041708aa8[m
+Author: CCIT OCR1 1-7 <CCIT.OCR1.17@gmail.com>
+Date:   Wed Dec 21 16:45:08 2022 +0700
+
+    Made BasketFragment && SettingFragment
+
+[33mcommit 74f5dc54282a0849220dcc17dde4ad0a37698348[m
+Author: CCIT OCR1 1-7 <CCIT.OCR1.17@gmail.com>
+Date:   Wed Dec 21 15:39:08 2022 +0700
+
+    Made InfoActivity
+
+[33mcommit 9081da435dedace095975d56c4a3a0e02a88aaa6[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Wed Dec 21 15:13:29 2022 +0700
+
+    (register activity)
+
+[33mcommit a80163b398fe7ba6114bec27b0501d2d07235641[m
+Merge: b038393 13b7718
+Author: CCIT OCR1 1-7 <CCIT.OCR1.17@gmail.com>
+Date:   Wed Dec 21 14:40:03 2022 +0700
+
+    Merge pavilion > main
+
+[33mcommit 13b7718af59a18b7ceac4f7fe8c3a14727e19c50[m
+Author: CCIT OCR1 1-7 <CCIT.OCR1.17@gmail.com>
+Date:   Wed Dec 21 14:39:03 2022 +0700
+
+    Fixed small bugs on fragment_home.xml
+
+[33mcommit 2ff9eb4a776cedd68d62cdf28fd00f7154cacbc9[m
+Author: WindowsRama <rafihariyadi01@gmail.com>
+Date:   Wed Dec 21 10:02:42 2022 +0700
+
+    Made HotFragment and SearchFragment && updated CardView, RecyclerView, HomeFragment xml, HomeAdapter
+
+[33mcommit 3479497b6d8ed02ae2cbfb5f75d17ba78c28d9e8[m
+Author: WindowsRama <rafihariyadi01@gmail.com>
+Date:   Wed Dec 21 00:05:59 2022 +0700
+
+    Home Fragment
+
+[33mcommit 09868ca5d939e86d9993511eb82b74c49db35f69[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Tue Dec 20 17:13:57 2022 +0700
+
+    Abis bikin LoginActivity
+
+[33mcommit 4b08a16f93b0d832d2dbfadbb8f97c453ced64f9[m
+Author: Komputer CCIT 1-12 <ccit.1_12@gmail.com>
+Date:   Tue Dec 20 16:41:04 2022 +0700
+
+    Membuat fragment home
+
+[33mcommit d9ce733848e113841b34e8cfefb2baad830b812e[m[33m ([m[1;32mzbook[m[33m)[m
+Merge: 8bd6556 b038393
+Author: WindowsRama <rafihariyadi01@gmail.com>
+Date:   Mon Dec 19 22:29:00 2022 +0700
+
+    Merge main > zbook
+
+[33mcommit b0383938f5febb0a6e53e9ab172039b72a431d31[m
+Merge: ee5f2a2 8e03881
+Author: CCIT OCR1 1-7 <CCIT.OCR1.17@gmail.com>
+Date:   Mon Dec 19 15:49:41 2022 +0700
+
+    Merge branch 'pavilion'
+
+[33mcommit 8e03881748d8cf3f4db616f1fa23f5350266a498[m
+Author: CCIT OCR1 1-7 <CCIT.OCR1.17@gmail.com>
+Date:   Mon Dec 19 15:49:29 2022 +0700
+
+    konfigurasi gradle
+
+[33mcommit ee5f2a2ddf323e2b48f4c4d6a60da01cf44590c4[m
+Merge: afc59b0 d1aaf75
+Author: CCIT OCR1 1-7 <CCIT.OCR1.17@gmail.com>
+Date:   Mon Dec 19 15:32:19 2022 +0700
+
+    Merge branch 'pavilion'
+
+[33mcommit d1aaf75d5c9c24e1ea5c2d2af7aa9ed39e2ec860[m
+Author: CCIT OCR1 1-7 <CCIT.OCR1.17@gmail.com>
+Date:   Mon Dec 19 15:30:37 2022 +0700
+
+    Konfigurasi gradle
+
+[33mcommit afc59b03d082f6f5258be209e54a218b8acdf908[m
+Author: CCIT OCR1 1-7 <CCIT.OCR1.17@gmail.com>
+Date:   Mon Dec 19 15:27:06 2022 +0700
+
+    Konfigurasi gradle untuk komputer CCIT
+
+[33mcommit 8bd655630a93de2541c0c68310906c1615c6a34b[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Sun Dec 18 20:43:08 2022 +0700
+
+    .idea/vcs.xml
+
+[33mcommit 5fa97c7a343c3b8079797ced569a85939765acaa[m
+Author: Dea Fitria <deyafitriaa@gmail.com>
+Date:   Sun Dec 18 20:40:42 2022 +0700
+
+    First Commit
