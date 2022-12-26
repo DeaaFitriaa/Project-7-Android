@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.food.loveappetite.R;
 import com.food.loveappetite.controller.ProductsController;
@@ -15,6 +16,7 @@ import com.food.loveappetite.fragment.HomeFragment;
 import com.food.loveappetite.fragment.HotFragment;
 import com.food.loveappetite.fragment.SearchFragment;
 import com.food.loveappetite.fragment.SettingFragment;
+import com.food.loveappetite.model.UsersModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -22,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Fragment fragment;
     private BottomNavigationView navigation;
-
     private static UsersController controller;
+    private static UsersModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         navigation = findViewById(R.id.bottom_navigation);
         navigation.setOnItemSelectedListener(itemSelectedListener);
+
+        model = (UsersModel) getIntent().getSerializableExtra("UsersModel");
 
         if (savedInstanceState == null)
             navigation.setSelectedItemId(R.id.nav_menu_home);
@@ -90,5 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static UsersController getUsersController() {
         return controller;
+    }
+
+    public static UsersModel getUsersModel(){
+        return model;
     }
 }
