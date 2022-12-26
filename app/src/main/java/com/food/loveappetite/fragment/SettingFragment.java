@@ -11,25 +11,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.food.loveappetite.R;
 import com.food.loveappetite.activity.LauncherActivity;
 import com.food.loveappetite.activity.MainActivity;
 import com.food.loveappetite.activity.UpdateUserActivity;
 import com.food.loveappetite.controller.UsersController;
+import com.food.loveappetite.model.UsersModel;
+import com.google.firebase.auth.FirebaseAuth;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SettingFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SettingFragment extends Fragment {
 
     private Intent intentLogout;
     private Intent intentProfile;
-
+    private TextView name, email, phoneNumber;
     private Button btnLogout;
     private Button btnProfile;
+    private static UsersModel model;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -44,6 +43,22 @@ public class SettingFragment extends Fragment {
 
         intentLogout = new Intent(getActivity(), LauncherActivity.class);
         intentProfile = new Intent(getActivity(), UpdateUserActivity.class);
+
+        name = view.findViewById(R.id.tv_user_name);
+        email = view.findViewById(R.id.tv_user_email);
+        phoneNumber = view.findViewById(R.id.tv_user_phone_number);
+
+        model = MainActivity.getUsersModel();
+
+        if (model != null) {
+            name.setText(MainActivity.getUsersModel().getName());
+            email.setText(MainActivity.getUsersModel().getEmail());
+            phoneNumber.setText(MainActivity.getUsersModel().getPhoneNumber());
+        } else {
+            FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+            FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            phoneNumber.setText("Harap Isi No. Telfon");
+        }
 
         btnLogout.setOnClickListener(rootView -> {
             MainActivity.getUsersController().logout();
