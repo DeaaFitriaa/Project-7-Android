@@ -37,7 +37,7 @@ public class TransactionsAdapter extends RecyclerView.Adapter<TransactionsAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.layout_card_view_product, parent, false);
+                .inflate(R.layout.layout_card_view_basket, parent, false);
 
         return new ViewHolder(view);
     }

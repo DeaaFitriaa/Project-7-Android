@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BasketFragment extends Fragment {
@@ -63,8 +64,8 @@ public class BasketFragment extends Fragment {
         btnPay = view.findViewById(R.id.btn_pay);
 
         cvBasketId = R.id.cv_basket;
-        tvProductNameId = R.id.tv_product_name;
-        tvProductPriceId = R.id.tv_product_price;
+        tvProductNameId = R.id.tv_product_name_basket;
+        tvProductPriceId = R.id.tv_product_price_basket;
 
         rvBasket.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -78,6 +79,7 @@ public class BasketFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful()) {
+                    transactionsList = new ArrayList<>();
                     for (DataSnapshot dataSnapshot : task.getResult().getChildren()) {
                         TransactionsModel transaction = dataSnapshot.getValue(TransactionsModel.class);
                         transactionsList.add(transaction);

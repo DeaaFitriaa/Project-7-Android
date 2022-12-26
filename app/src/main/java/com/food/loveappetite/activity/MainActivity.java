@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         navigation = findViewById(R.id.bottom_navigation);
         navigation.setOnItemSelectedListener(itemSelectedListener);
 
+        if (controller == null)
+            controller = new UsersController();
+
         model = (UsersModel) getIntent().getSerializableExtra("UsersModel");
 
         if (savedInstanceState == null)

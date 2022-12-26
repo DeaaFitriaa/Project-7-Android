@@ -2,6 +2,7 @@ package com.food.loveappetite.activity;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,6 +17,10 @@ import android.widget.TextView;
 import com.food.loveappetite.R;
 import com.food.loveappetite.controller.UsersController;
 import com.food.loveappetite.model.UsersModel;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -69,8 +74,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
 
         if (controller.isLoggedIn()) {
-            startActivity(intentLogin);
-            finish();
+            controller.read(FirebaseAuth.getInstance().getCurrentUser(), new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful())
+                        model = task.getResult().getValue(UsersModel.class);
+
+                    intentLogin.putExtra("UsersModel", model);
+                    startActivity(intentLogin);
+                    finish();
+                }
+            });
         }
     }
 }
