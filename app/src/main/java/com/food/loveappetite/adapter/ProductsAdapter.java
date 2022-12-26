@@ -2,6 +2,7 @@ package com.food.loveappetite.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +27,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     private Context context;
     private ProductsAdapter.ProductsInterface productInterface;
     private CardView cardView;
+    private int cardViewId;
     private ImageView imageView;
+    private int imageViewId;
     private TextView tvHot;
+    private int tvHotId;
     private TextView tvName;
+    private int tvNameId;
     private TextView tvDesc;
+    private int tvDescId;
 
     public ProductsAdapter(List<ProductsModel> list, Context context, ProductsAdapter.ProductsInterface productInterface,
                            CardView cardView, ImageView imageView, TextView tvHot, TextView tvName, TextView tvDesc) {
@@ -44,16 +50,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     }
 
     public ProductsAdapter(List<ProductsModel> list, Context context, ProductsAdapter.ProductsInterface productInterface,
-                           int cardView, int imageView, int tvHot, int tvName, int tvDesc) {
+                           int cardViewId, int imageViewId, int tvHotId, int tvNameId, int tvDescId) {
         this.data = list;
         this.context = context;
         this.productInterface = productInterface;
-        Activity activity = (Activity) context;
-        this.cardView = activity.findViewById(cardView);
-        this.imageView = activity.findViewById(imageView);
-        this.tvHot = activity.findViewById(tvHot);
-        this.tvName = activity.findViewById(tvName);
-        this.tvDesc = activity.findViewById(tvDesc);
+        this.cardViewId = cardViewId;
+        this.imageViewId = imageViewId;
+        this.tvHotId = tvHotId;
+        this.tvNameId = tvNameId;
+        this.tvDescId = tvDescId;
     }
 
     @NonNull
@@ -68,12 +73,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ProductsModel model = data.get(position);
+        Log.d(getClass().getSimpleName(), "ID : " + model.getID());
+        Log.d(getClass().getSimpleName(), "Name : " + model.getName());
+        Log.d(getClass().getSimpleName(), "Desc : " + model.getDescription());
+        Log.d(getClass().getSimpleName(), "HOT : " + model.getHot());
+        Log.d(getClass().getSimpleName(), "Price : " + model.getPrice());
 
-        Glide.with(context)
-                .load(model.getImageURL())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .override(Target.SIZE_ORIGINAL)
-                .into(holder.ivProductImg);
+//        Glide.with(context)
+//                .load(model.getImageURL())
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .override(Target.SIZE_ORIGINAL)
+//                .into(holder.ivProductImg);
         if (model.getHot().equals("1")) {
             holder.tvHotDeal.setVisibility(View.VISIBLE);
             holder.tvHotDeal.setText("HOT DEAL");
@@ -107,11 +117,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            cvProduct = cardView;
-            tvHotDeal = tvHot;
-            ivProductImg = imageView;
-            tvProductName = tvName;
-            tvProductDesc = tvDesc;
+            cvProduct = itemView.findViewById(cardViewId);
+            tvHotDeal = itemView.findViewById(tvHotId);
+            ivProductImg = itemView.findViewById(imageViewId);
+            tvProductName = itemView.findViewById(tvNameId);
+            tvProductDesc = itemView.findViewById(tvDescId);
         }
     }
 }

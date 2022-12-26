@@ -18,11 +18,6 @@ import com.food.loveappetite.activity.MainActivity;
 import com.food.loveappetite.activity.UpdateUserActivity;
 import com.food.loveappetite.controller.UsersController;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SettingFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SettingFragment extends Fragment {
 
     private Intent intentLogout;
@@ -46,9 +41,9 @@ public class SettingFragment extends Fragment {
         intentProfile = new Intent(getActivity(), UpdateUserActivity.class);
 
         btnLogout.setOnClickListener(rootView -> {
-            MainActivity.getUsersController().logout();
-            startActivity(intentLogout);
-            getActivity().finish();
+//            MainActivity.getUsersController().logout();
+//            startActivity(intentLogout);
+//            getActivity().finish();
         });
         btnProfile.setOnClickListener(rootView -> {
             startActivity(intentProfile);

@@ -2,6 +2,7 @@ package com.food.loveappetite.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,19 +34,30 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
 
     private List<CategoriesModel> data;
     private Context context;
-    private TextView tvName;
-    private TextView tvDesc;
-    private RecyclerView rvProducts;
+    private int tvNameId;
+    private int tvDescId;
+    private int rvProductsId;
     private List<ProductsModel> products;
+    private int cvProductId;
+    private int ivProductId;
+    private int tvProductHotId;
+    private int tvProductNameId;
+    private int tvProductDescId;
 
-    public CategoriesAdapter(List<CategoriesModel> list, Context context, TextView tvName, TextView tvDesc,
-                             RecyclerView rvProducts, List<ProductsModel> products) {
+    public CategoriesAdapter(List<CategoriesModel> list, Context context, int tvNameId, int tvDescId,
+                             int rvProductsId, List<ProductsModel> products, int cvProductId, int ivProductId,
+                             int tvProductHotId, int tvProductNameId, int tvProductDescId) {
         this.data = list;
         this.context = context;
-        this.tvName = tvName;
-        this.tvDesc = tvDesc;
-        this.rvProducts = rvProducts;
+        this.tvNameId = tvNameId;
+        this.tvDescId = tvDescId;
+        this.rvProductsId = rvProductsId;
         this.products = products;
+        this.cvProductId = cvProductId;
+        this.ivProductId = ivProductId;
+        this.tvProductHotId = tvProductHotId;
+        this.tvProductNameId = tvProductNameId;
+        this.tvProductDescId = tvProductDescId;
     }
 
     @NonNull
@@ -62,16 +74,22 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         CategoriesModel model = data.get(position);
 
         for (ProductsModel product : products) {
-            if (product.getID().equals(model.getID()))
-                holder.products.add(product);
+            Log.d(getClass().getSimpleName(), "Product's CategoryID : " + product.getCategoryID());
+            Log.d(getClass().getSimpleName(), "CategoryID : " + model.getID());
+            if (product.getCategoryID().equals(model.getID())) {
+                Log.d(getClass().getSimpleName(), "EQUALS");
+                holder.data.add(product);
+            }
         }
-        ProductsAdapter productsAdapter = new ProductsAdapter(holder.products, context, this,
-                R.layout.layout_card_view_product, R.id.iv_food, R.id.tv_hot_deal, R.id.tv_product_name,
-                R.id.tv_product_desc);
+        Log.d(getClass().getSimpleName(), holder.data.toString());
+
+        ProductsAdapter productsAdapter = new ProductsAdapter(holder.data, context, this,
+                cvProductId, ivProductId, tvProductHotId, tvProductNameId, tvProductDescId);
 
         LinearLayoutManager llManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
         holder.rvProducts.setLayoutManager(llManager);
         holder.rvProducts.setAdapter(productsAdapter);
+        productsAdapter.notifyDataSetChanged();
         holder.tvName.setText(model.getName());
         holder.tvDesc.setText(model.getDescription());
     }
@@ -93,14 +111,14 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         private TextView tvName;
         private TextView tvDesc;
         private RecyclerView rvProducts;
-        private List<ProductsModel> products;
+        private List<ProductsModel> data;
 
-        public ViewHolder(@NonNull View itemView, List<ProductsModel> products) {
+        public ViewHolder(@NonNull View itemView, List<ProductsModel> data) {
             super(itemView);
-            this.tvName = CategoriesAdapter.this.tvName;
-            this.tvDesc = CategoriesAdapter.this.tvDesc;
-            this.rvProducts = CategoriesAdapter.this.rvProducts;
-            this.products = products;
+            this.tvName = itemView.findViewById(tvNameId);
+            this.tvDesc = itemView.findViewById(tvDescId);
+            this.rvProducts = itemView.findViewById(rvProductsId);
+            this.data = data;
         }
     }
 }
