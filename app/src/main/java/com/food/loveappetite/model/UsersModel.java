@@ -11,19 +11,6 @@ public class UsersModel implements Serializable {
     private String Password;
     private String PhoneNumber;
 
-    public UsersModel(){
-
-    }
-
-    public UsersModel(String Address, String Email, String ID, String Name, String Password, String PhoneNumber){
-        this.Address = Address;
-        this.Email = Email;
-        this.ID = ID;
-        this.Name = Name;
-        this.Password = Password;
-        this.PhoneNumber = PhoneNumber;
-    }
-
     public String getAddress(){
         return Address;
     }

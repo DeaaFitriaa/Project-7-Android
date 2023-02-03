@@ -12,18 +12,6 @@ public class ProductsModel implements Serializable {
     private String Price;
     private String ImageURL;
 
-    public ProductsModel(){
-
-    }
-
-    public ProductsModel(String CategoryID, String Description, String HOT, String ID, String Name){
-        this.CategoryID = CategoryID;
-        this.Description = Description;
-        this.HOT = HOT;
-        this.ID = ID;
-        this.Name = Name;
-    }
-
     public String getID(){
         return ID;
     }

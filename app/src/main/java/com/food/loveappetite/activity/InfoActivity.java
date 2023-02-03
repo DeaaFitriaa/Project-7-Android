@@ -44,7 +44,7 @@ public class InfoActivity extends AppCompatActivity {
         if (userModel == null)
             userModel = MainActivity.getUsersModel();
 
-        if (controller == null)
+        if (controller == null) 
             controller = new TransactionsController(userModel);
 
         ivProduct = findViewById(R.id.iv_product);
